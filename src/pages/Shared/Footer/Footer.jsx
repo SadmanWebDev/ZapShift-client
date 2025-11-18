@@ -2,17 +2,30 @@ import React from "react";
 import Logo from "../../../components/Logo/Logo";
 
 const Footer = () => {
+  const links = (
+    <>
+      <li>Services</li>
+      <li>Coverage</li>
+      <li>About Us</li>
+      <li>Pricing</li>
+      <li>Blog</li>
+      <li>Contact</li>
+    </>
+  );
+
   return (
-    <footer className="footer footer-horizontal footer-center p-10 text-secondary">
+    <footer className="footer footer-horizontal footer-center bg-[#030712] p-10 text-white rounded-4xl">
       <aside>
         <Logo></Logo>
-        <p className="font-bold">
-          ACME Industries Ltd.
-          <br />
-          Providing reliable tech since 1992
+        <p className="text-gray-300 max-w-2xl">
+          Enjoy fast, reliable parcel delivery with real-time tracking and zero
+          hassle. From personal packages to business shipments — we deliver on
+          time, every time.
         </p>
-        <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
       </aside>
+      <div className="border border-dashed border-secondary w-full"></div>
+      <ul className="flex gap-5 text-gray-300">{links}</ul>
+      <div className="border border-dashed w-full border-secondary"></div>
       <nav>
         <div className="grid grid-flow-col gap-4">
           <a>

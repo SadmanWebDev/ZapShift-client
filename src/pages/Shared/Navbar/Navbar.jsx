@@ -15,7 +15,13 @@ const Navbar = () => {
         <NavLink to="">About Us</NavLink>
       </li>
       <li>
-        <NavLink to="">Services</NavLink>
+        <NavLink to="">Pricing</NavLink>
+      </li>
+      <li>
+        <NavLink to="">Blog</NavLink>
+      </li>
+      <li>
+        <NavLink to="">Contact</NavLink>
       </li>
     </>
   );
@@ -51,7 +57,7 @@ const Navbar = () => {
         <Logo></Logo>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal px-1 gap-5">{links}</ul>
       </div>
       <div className="navbar-end">
         <a className="btn">Button</a>
