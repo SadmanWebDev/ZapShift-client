@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../../components/Logo/Logo";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 
 const Navbar = () => {
   const links = (
@@ -60,7 +60,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1 gap-5">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <Link to="/login">
+          <button className="btn btn-primary text-black">Login</button>
+        </Link>
       </div>
     </div>
   );
