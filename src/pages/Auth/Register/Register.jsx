@@ -1,7 +1,11 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../hooks/useAuth";
+import { Link } from "react-router";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
+  const { registerUser } = useAuth();
   const {
     register,
     handleSubmit,
@@ -10,6 +14,16 @@ const Register = () => {
 
   const handleRegister = (data) => {
     console.log(data);
+    const profileImg = data.photo[0];
+    registerUser(data.email, data.password)
+      .then((result) => {
+        console.log(result.user);
+        const formData = new FormData();
+        formData.append("image", profileImg);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -24,6 +38,20 @@ const Register = () => {
             <div className="card-body">
               <form onSubmit={handleSubmit(handleRegister)}>
                 <fieldset className="fieldset">
+                  <label className="label">Name</label>
+                  <input
+                    type="name"
+                    {...register("name", { required: true })}
+                    className="input"
+                    placeholder="Your Name"
+                  />
+                  <label className="label">Photo</label>
+                  <input
+                    type="file"
+                    {...register("photo", { required: true })}
+                    className="file-input"
+                    placeholder="Email"
+                  />
                   <label className="label">Email</label>
                   <input
                     type="email"
@@ -50,11 +78,17 @@ const Register = () => {
                     </p>
                   )}
                   <div>
-                    <a className="link link-hover">Forgot password?</a>
+                    <p>
+                      Already have account?{" "}
+                      <Link to="/login" className="link link-hover">
+                        Login!
+                      </Link>
+                    </p>
                   </div>
                   <button className="btn btn-neutral mt-4">Register</button>
                 </fieldset>
               </form>
+              <SocialLogin></SocialLogin>
             </div>
           </div>
         </div>
