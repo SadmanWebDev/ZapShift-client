@@ -1,7 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../hooks/useAuth";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
@@ -11,6 +11,9 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
 
   const handleRegister = (data) => {
     console.log(data);
@@ -80,7 +83,11 @@ const Register = () => {
                   <div>
                     <p>
                       Already have account?{" "}
-                      <Link to="/login" className="link link-hover">
+                      <Link
+                        state={location.state}
+                        to="/login"
+                        className="link link-hover"
+                      >
                         Login!
                       </Link>
                     </p>

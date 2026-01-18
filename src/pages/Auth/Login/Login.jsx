@@ -1,22 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
   const { signInUser } = useAuth();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogin = (data) => {
     console.log(data);
     signInUser(data.email, data.password)
       .then((result) => {
         console.log(result);
+        navigate(location?.state || "/");
       })
       .catch((error) => {
         console.log(error);
@@ -52,7 +51,11 @@ const Login = () => {
                   <div>
                     <p>
                       Don't have account?{" "}
-                      <Link to="/register" className="link link-hover">
+                      <Link
+                        state={location.state}
+                        to="/register"
+                        className="link link-hover"
+                      >
                         Register!
                       </Link>
                     </p>
