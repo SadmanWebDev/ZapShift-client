@@ -13,10 +13,8 @@ const Register = () => {
   } = useForm();
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
 
   const handleRegister = (data) => {
-    console.log(data);
     const profileImg = data.photo[0];
     registerUser(data.email, data.password)
       .then((result) => {
